@@ -12,6 +12,8 @@ trait CanopyItem {
 
   def isExpanded() : Boolean
 
+  def parentToggled(parentExpanded: Boolean, parentVisible: Boolean) : Unit
+
 
   // Visibility
 
@@ -24,7 +26,7 @@ trait CanopyItem {
 
   def getDepth() : Integer
 
-  def getChildCound() : Integer
+  def getChildCount() : Integer
 
 
   // Views
