@@ -2,7 +2,7 @@ package com.aesthetikx.android.canopy
 
 import android.view.{LayoutInflater, View, ViewGroup}
 
-trait TreeListItem {
+trait CanopyItem {
 
   // Expansion
 
