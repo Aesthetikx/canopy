@@ -24,3 +24,13 @@ android {
     versionName "1.0"
   }
 }
+
+repositories {
+  flatDir {
+    dirs '../canopy/build/outputs/aar'
+  }
+}
+
+dependencies {
+  compile(name: 'canopy', ext: 'aar')
+}
