@@ -27,10 +27,10 @@ android {
 
 repositories {
   flatDir {
-    dirs '../canopy/build/outputs/aar'
+    dirs '../library/build/outputs/aar'
   }
 }
 
 dependencies {
-  compile(name: 'canopy', ext: 'aar')
+  compile project(':library')
 }

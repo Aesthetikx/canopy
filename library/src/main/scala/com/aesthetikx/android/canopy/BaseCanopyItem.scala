@@ -17,6 +17,9 @@ abstract class BaseCanopyItem(
     private val children: List[CanopyItem])
     extends CanopyItem {
 
+  // Auxiliary constructor
+  def this(depth: Int, children: List[CanopyItem]) = this(true, true, depth, children)
+
 
   // Expansion
 

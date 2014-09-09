@@ -1,2 +1,1 @@
-include 'canopy'
-include 'sample'
+include 'library', 'sample'
