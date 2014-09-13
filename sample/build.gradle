@@ -9,6 +9,9 @@ buildscript {
 
 repositories {
   mavenCentral()
+  flatDir {
+    dirs '../library/build/outputs/aar'
+  }
 }
 
 apply plugin: "android"
@@ -25,12 +28,7 @@ android {
   }
 }
 
-repositories {
-  flatDir {
-    dirs '../library/build/outputs/aar'
-  }
-}
-
 dependencies {
+  compile 'com.thedeanda:lorem:1.2'
   compile project(':library')
 }
