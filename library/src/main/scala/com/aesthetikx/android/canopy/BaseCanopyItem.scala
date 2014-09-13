@@ -6,7 +6,7 @@ import android.widget.{FrameLayout, RelativeLayout}
 
 import com.aesthetikx.android.canopy.view.CanopyRowView
 
-import java.util.List;
+import java.util.List
 
 import scala.collection.JavaConversions._
 
@@ -25,10 +25,11 @@ abstract class BaseCanopyItem(
 
   override def setExpanded(expanded: Boolean) : Unit = {
     this.expanded = expanded
+    children.toList.foreach { child => child.parentToggled(isExpanded, isVisible) }
   }
 
   override def toggleExpanded() : Unit = {
-    expanded = !expanded
+    setExpanded(!expanded)
   }
 
   override def isExpanded() : Boolean = expanded
@@ -55,6 +56,8 @@ abstract class BaseCanopyItem(
   override def getChildCount() : Integer = {
     children.toList.foldLeft(0) { (count, child) => count + (child.getChildCount + 1) }
   }
+
+  override def getChildren(): List[CanopyItem] = children
 
 
   // Views
