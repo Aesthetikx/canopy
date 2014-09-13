@@ -4,7 +4,13 @@ import android.content.Context
 import android.view.{LayoutInflater, View, ViewGroup}
 import android.widget.BaseAdapter
 
-class CanopyAdapter(val context: Context, var items: List[CanopyItem]) extends BaseAdapter {
+import java.util.List
+
+import scala.collection.JavaConversions._
+
+class CanopyAdapter(val context: Context, var root: CanopyItem) extends BaseAdapter {
+
+  val items: List[CanopyItem] = flattenCanopy(root)
 
   override def getCount(): Int = items.filter(item => item.isVisible).length
 
@@ -15,9 +21,7 @@ class CanopyAdapter(val context: Context, var items: List[CanopyItem]) extends B
   override def getView(position: Int, convertView: View, parent: ViewGroup): View = {
     val item = getItem(position).asInstanceOf[CanopyItem]
 
-    val inflater = context
-      .getSystemService(Context.LAYOUT_INFLATER_SERVICE)
-      .asInstanceOf[LayoutInflater]
+    val inflater: LayoutInflater = LayoutInflater.from(context)
 
     val view: View = item.isExpanded match {
       case true => item.getExpandedView(inflater, parent)
@@ -28,5 +32,7 @@ class CanopyAdapter(val context: Context, var items: List[CanopyItem]) extends B
 
     view
   }
+
+  private def flattenCanopy(root: CanopyItem): List[CanopyItem] = root :: root.getChildren.toList.flatMap(child => flattenCanopy(child))
 
 }
