@@ -1,5 +1,6 @@
 package com.aesthetikx.android.canopy
 
+import android.graphics.Color
 import android.util.TypedValue
 import android.view.{LayoutInflater, View, ViewGroup}
 import android.widget.{FrameLayout, RelativeLayout}
@@ -63,11 +64,13 @@ abstract class BaseCanopyItem(
   // Views
 
   private def getDefaultCanopyRowView(inflater: LayoutInflater, parent: ViewGroup): View = {
-    val view: View = inflater.inflate(R.layout.canopy_row_view, parent, false)
+    val view: CanopyRowView = inflater.inflate(R.layout.canopy_row, parent, false).asInstanceOf[CanopyRowView]
 
-    val fiveDpi: Integer = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, inflater.getContext.getResources.getDisplayMetrics).asInstanceOf[Integer]
+    val fiveDpi: Integer = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, inflater.getContext.getResources.getDisplayMetrics).toInt
 
-    view.asInstanceOf[CanopyRowView].getSpacer.setLayoutParams(new RelativeLayout.LayoutParams(fiveDpi * getDepth, ViewGroup.LayoutParams.MATCH_PARENT))
+    view.getSpacer.getLayoutParams.width = getDepth * fiveDpi
+
+    view.getColorBar.setBackgroundColor(Color.RED)
 
     view
   }
