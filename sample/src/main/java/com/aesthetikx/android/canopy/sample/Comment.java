@@ -27,7 +27,7 @@ public class Comment extends BaseCanopyItem {
     @Override
     public View getExpandedView(LayoutInflater inflater, ViewGroup parent) {
         CanopyRowView canopyRow = (CanopyRowView) super.getExpandedView(inflater, parent);
-        RelativeLayout content = canopyRow.getContentLayout();
+        LinearLayout content = canopyRow.getContentLayout();
 
         LinearLayout commentLayout = (LinearLayout) inflater.inflate(R.layout.comment_layout, null, false);
 
@@ -42,7 +42,7 @@ public class Comment extends BaseCanopyItem {
     @Override
     public View getCollapsedView(LayoutInflater inflater, ViewGroup parent) {
         CanopyRowView canopyRow = (CanopyRowView) super.getExpandedView(inflater, parent);
-        RelativeLayout content = canopyRow.getContentLayout();
+        LinearLayout content = canopyRow.getContentLayout();
         TextView text = new TextView(inflater.getContext());
         text.setText((getChildCount() + 1) + " comment(s) hidden");
         content.addView(text,

@@ -3,7 +3,7 @@ package com.aesthetikx.android.canopy.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.{FrameLayout, LinearLayout, RelativeLayout}
+import android.widget.{FrameLayout, LinearLayout}
 
 import com.aesthetikx.android.canopy.R
 
@@ -21,13 +21,13 @@ class CanopyRowView(
 
   private val spacer = findViewById(R.id.spacer).asInstanceOf[FrameLayout]
   private val colorBar = findViewById(R.id.color_bar).asInstanceOf[FrameLayout]
-  private val content = findViewById(R.id.content).asInstanceOf[RelativeLayout]
+  private val content = findViewById(R.id.content).asInstanceOf[LinearLayout]
 
 
   def getSpacer(): FrameLayout = spacer
 
   def getColorBar(): FrameLayout = colorBar
 
-  def getContentLayout(): RelativeLayout = content
+  def getContentLayout(): LinearLayout = content
 
 }
