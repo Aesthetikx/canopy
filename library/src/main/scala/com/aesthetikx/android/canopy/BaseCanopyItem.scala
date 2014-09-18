@@ -5,7 +5,7 @@ import android.util.TypedValue
 import android.view.{LayoutInflater, View, ViewGroup}
 import android.widget.{FrameLayout, RelativeLayout}
 
-import com.aesthetikx.android.canopy.view.{CanopyRowView, DefaultColorProvider}
+import com.aesthetikx.android.canopy.view.{CanopyRowView, ColorProvider, DefaultColorProvider}
 
 import java.util.List
 
@@ -70,7 +70,7 @@ abstract class BaseCanopyItem(
 
     view.getSpacer.getLayoutParams.width = getDepth * fiveDpi
 
-    view.getColorBar.setBackgroundColor(DefaultColorProvider.getColor(depth))
+    view.getColorBar.setBackgroundColor(getColorProvider.getColor(depth))
 
     view
   }
@@ -78,5 +78,7 @@ abstract class BaseCanopyItem(
   override def getExpandedView(inflater: LayoutInflater, parent: ViewGroup): View = getDefaultCanopyRowView(inflater, parent)
 
   override def getCollapsedView(inflater: LayoutInflater, parent: ViewGroup): View = getDefaultCanopyRowView(inflater, parent)
+
+  def getColorProvider:ColorProvider = DefaultColorProvider
 
 }

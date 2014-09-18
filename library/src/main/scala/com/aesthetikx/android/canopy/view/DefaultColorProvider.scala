@@ -4,7 +4,7 @@ import android.graphics.Color
 
 object DefaultColorProvider extends ColorProvider {
 
-  val colors: List[Integer] = List(
+  val colors: List[Int] = List(
       Color.rgb(201, 94, 94),
       Color.rgb(201, 139, 94),
       Color.rgb(200, 184, 91),
@@ -14,6 +14,6 @@ object DefaultColorProvider extends ColorProvider {
       Color.rgb(143, 87, 199)
     )
 
-  override def getColor(depth: Integer): Integer = colors(depth % colors.size)
+  override def getColor(depth: Int): Int = colors(depth % colors.size)
 
 }
